@@ -11,14 +11,14 @@ import java.util.stream.Collectors;
 @Component
 @AllArgsConstructor
 public class StudentToStudentFileDTO implements Converter<Student, StudentFileDTO> {
-    private final StudentFeeToStudentFeeDTO toStudentFeeDTO;
     @Override
     public StudentFileDTO convert(Student source) {
         if (source!=null){
             StudentFileDTO studentFileDTO = new StudentFileDTO();
             studentFileDTO.setName(source.getName());
             studentFileDTO.setPaidFees(source.getStudentFeeList().stream()
-                    .map(studentFee -> "Amount: " + String.valueOf(studentFee.getAmount())).collect(Collectors.toList()));
+                    .map(studentFee -> studentFee.getAmount()).collect(Collectors.toList()));
+
             return studentFileDTO;
         }
         return null;

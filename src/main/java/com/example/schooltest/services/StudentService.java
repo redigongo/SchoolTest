@@ -61,7 +61,16 @@ public class StudentService {
         List<StudentFileDTO> students = studentRepository.findAll(sort).stream()
                 .map(student -> toStudentFileDTO.convert(student)).collect(Collectors.toList());
 
-        String studentListString = students.toString();
+        StringBuilder stringBuilder = new StringBuilder();
+
+        for (StudentFileDTO st : students) {
+            stringBuilder.append(st.getName()).append(st.getPaidFees().size()!=0 ? "\n\tFees Paid:\n" : "\n");
+            for (double fee : st.getPaidFees()) {
+                stringBuilder.append("\t$").append(String.format("%.2f", fee)).append("\n");
+            }
+        }
+        String formattedString = stringBuilder.toString();
+
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm-ss");
         String timestamp = formatter.format(LocalDateTime.now());
 
@@ -69,15 +78,13 @@ public class StudentService {
             File file = new File("data/list_" + timestamp + ".txt");
             file.createNewFile();
             FileWriter writer = new FileWriter(file);
-            writer.write(studentListString);
+            writer.write(formattedString);
             writer.close();
             return "File saved";
         } catch (IOException e) {
             e.printStackTrace();
+
             return e.getMessage();
         }
-
-
     }
-
 }

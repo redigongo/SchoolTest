@@ -1,9 +1,6 @@
 package com.example.schooltest.InitialData;
 
-import com.example.schooltest.models.School;
-import com.example.schooltest.models.Student;
-import com.example.schooltest.models.Subject;
-import com.example.schooltest.models.Teacher;
+import com.example.schooltest.models.*;
 import com.example.schooltest.repositories.*;
 import lombok.AllArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
@@ -20,6 +17,7 @@ public class LoadData implements CommandLineRunner {
     private final SchoolRepository schoolRepository;
     private final SubjectRepository subjectRepository;
     private final StudentRepository studentRepository;
+    private final StudentFeeRepository studentFeeRepository;
     @Override
     public void run(String... args) throws Exception {
         saveTeachers();
@@ -30,6 +28,7 @@ public class LoadData implements CommandLineRunner {
             School school = new School();
             school.setName("School 1");
             school.setTotalMoneySpent(4000);
+            school.setTotalMoneyEarned(6000);
             schoolRepository.save(school);
 
             Subject subject1 = new Subject();
@@ -99,9 +98,22 @@ public class LoadData implements CommandLineRunner {
             zStudent.setFeesRemaining(5000);
             students.add(zStudent);
 
-
-
             studentRepository.saveAll(students);
+
+            StudentFee studentFee1 = new StudentFee();
+            studentFee1.setAmount(2000);
+            studentFee1.setStudent(aStudent);
+            studentFeeRepository.save(studentFee1);
+
+            StudentFee studentFee2 = new StudentFee();
+            studentFee2.setAmount(2000);
+            studentFee2.setStudent(aStudent);
+            studentFeeRepository.save(studentFee2);
+
+            StudentFee studentFee3 = new StudentFee();
+            studentFee3.setAmount(2000);
+            studentFee3.setStudent(zStudent);
+            studentFeeRepository.save(studentFee3);
 
         }
     }

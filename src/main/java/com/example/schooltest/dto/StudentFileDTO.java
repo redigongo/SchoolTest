@@ -7,5 +7,5 @@ import java.util.List;
 @Data
 public class StudentFileDTO {
     String name;
-    List<String> paidFees;
+    List<Double> paidFees;
 }
