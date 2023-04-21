@@ -11,6 +11,8 @@ public class SchoolDTO {
     double totalMoneyEarned;
     double totalMoneySpent;
 
+    double netEarnings;
+    double netLosses;
     List<StudentDTO> students;
     List<TeacherDTO> teachers;
 }

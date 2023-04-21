@@ -79,7 +79,7 @@ public class LoadData implements CommandLineRunner {
             List<Student> students = new ArrayList<>();
             for (int i = 1; i<=10; i++){
                 Student student = new Student();
-                student.setName("Student" + i);
+                student.setName("Student " + i);
                 student.setSchool(school);
                 student.setSubject(i<=5 ? subject1 : subject2);
                 student.setFeesRemaining(5000);

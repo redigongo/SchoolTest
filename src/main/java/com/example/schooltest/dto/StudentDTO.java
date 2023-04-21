@@ -11,7 +11,7 @@ public class StudentDTO {
     String name;
     double feesPaid;
     double feesRemaining;
-    List<StudentFee> studentFeeList;
+    List<StudentFeeDTO> studentFeeList;
     Long subjectId;
     Long schoolId;
 }
