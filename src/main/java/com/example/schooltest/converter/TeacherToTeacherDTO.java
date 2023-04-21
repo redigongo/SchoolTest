@@ -18,6 +18,7 @@ public class TeacherToTeacherDTO implements Converter<Teacher, TeacherDTO> {
             teacherDTO.setSalary(source.getSalary());
             teacherDTO.setSchoolId(source.getSchool()!=null ? source.getSchool().getId() : null);
             teacherDTO.setSubjectId(source.getSubject()!=null ? source.getSubject().getId() : null);
+            return  teacherDTO;
         }
         return null;
     }

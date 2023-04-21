@@ -24,8 +24,10 @@ public class SchoolToSchoolDTO implements Converter<School, SchoolDTO> {
             schoolDTO.setName(source.getName());
             schoolDTO.setTotalMoneySpent(source.getTotalMoneySpent());
             schoolDTO.setTotalMoneyEarned(source.getTotalMoneyEarned());
+
             schoolDTO.setTeachers(source.getTeachers().stream()
                     .map(teacher -> toTeacherDTO.convert(teacher)).collect(Collectors.toList()));
+
             schoolDTO.setStudents(source.getStudents().stream()
                     .map(student -> toStudentDTO.convert(student)).collect(Collectors.toList()));
 
@@ -41,6 +43,7 @@ public class SchoolToSchoolDTO implements Converter<School, SchoolDTO> {
             }else {
                 schoolDTO.setNetLosses(0);
             }
+            return schoolDTO;
 
         }
         return null;

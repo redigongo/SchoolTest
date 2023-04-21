@@ -17,6 +17,7 @@ public class SchoolController {
 
     @GetMapping
     public List<SchoolDTO> findAll(){
+
         return schoolService.findAll();
     }
 

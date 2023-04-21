@@ -85,6 +85,22 @@ public class LoadData implements CommandLineRunner {
                 student.setFeesRemaining(5000);
                 students.add(student);
             }
+            Student aStudent = new Student();
+            aStudent.setName("Annie Brice");
+            aStudent.setSchool(school);
+            aStudent.setSubject(subject3);
+            aStudent.setFeesRemaining(5000);
+            students.add(aStudent);
+
+            Student zStudent = new Student();
+            zStudent.setName("Zoey Peterson");
+            zStudent.setSchool(school);
+            zStudent.setSubject(subject4);
+            zStudent.setFeesRemaining(5000);
+            students.add(zStudent);
+
+
+
             studentRepository.saveAll(students);
 
         }

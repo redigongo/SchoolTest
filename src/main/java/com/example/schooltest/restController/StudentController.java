@@ -32,4 +32,9 @@ public class StudentController {
         studentService.delete(id);
     }
 
+    @GetMapping("/saveFile")
+    public String saveFile(){
+        return studentService.saveFile();
+    }
+
 }
