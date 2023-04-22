@@ -75,7 +75,7 @@ public class StudentService {
         String timestamp = formatter.format(LocalDateTime.now());
 
         try {
-            File file = new File("data/list_" + timestamp + ".txt");
+            File file = new File("data/student_" + timestamp + ".txt");
             file.createNewFile();
             FileWriter writer = new FileWriter(file);
             writer.write(formattedString);
